@@ -1,0 +1,121 @@
+<pa-navbar></pa-navbar>
+<div class="container-fluid">  
+  <div class="row">    
+      <div *ngIf="!isNewUser"  class="col-sm-6">
+          <h2 style="color: dimgrey;">Edit User</h2>
+      </div>
+      <div *ngIf="isNewUser" class="col-sm-6">
+          <h2 style="color: dimgrey;">New User</h2>
+      </div>
+      <div  class="col-sm-6">          
+      </div>
+  </div>  
+  <div class="container" *ngIf="user">
+      <form (ngSubmit)="onSave(user)" #userForm="ngForm">
+  <div class="row">    
+    <div class="col-sm-6">
+        <img [src]="user.pictureURL" class="img-thumbnail" alt="Picture URL">
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group" [ngClass]="{'has-error': firtsName.invalid && firtsName.dirty}">
+            <label for="firtsName" class="control-label">
+              Firts Name (<b style="color: red">*</b>) 
+            </label>
+            <input type="text" class="form-control" name="firtsName" [(ngModel)]="user.firstName" #firtsName="ngModel" required>
+            <div *ngIf="firtsName.invalid && firtsName.dirty">
+              First Name is required
+            </div>
+          </div>
+      
+          <div class="form-group" [ngClass]="{'has-error': lastName.invalid && lastName.dirty}">
+            <label for="lastName" class="control-label">
+              Last Name (<b style="color: red">*</b>)
+            </label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required>
+            <div *ngIf="lastName.invalid && lastName.dirty" class="text-danger">
+              Last Name is required
+            </div>
+          </div>
+      
+          <div class="form-group" [ngClass]="{'has-error': street.invalid && street.dirty}">
+            <label for="street" class="control-label">
+              Street (<b style="color: red">*</b>)
+            </label>
+            <input type="text" class="form-control" name="street" [(ngModel)]="user.street" #street="ngModel" required>
+            <div *ngIf="street.invalid && street.dirty" class="text-danger">
+              Street is required
+            </div>
+          </div>
+      
+          <div class="form-group" [ngClass]="{'has-error': city.invalid && city.dirty}">
+            <label for="city" class="control-label">
+              Cityt (<b style="color: red">*</b>)
+            </label>
+            <input type="text" class="form-control" name="city" [(ngModel)]="user.city" #city="ngModel" required>
+            <div *ngIf="city.invalid && city.dirty" class="text-danger">
+              City is required
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="gender" class="control-label">
+              Gender (<b style="color: red">*</b>)
+            </label>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender" value="Male" [(ngModel)]="user.gender"> Male
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender" value="Female" [(ngModel)]="user.gender"> Female
+                </label>
+              </div>
+            </div>
+          </div>
+      
+          <div class="form-group" [ngClass]="{'has-error': email.invalid && email.dirty}">
+            <label for="city" class="control-label">
+              Email (<b style="color: red">*</b>)
+            </label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" pattern="^[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              title="Email is invalid" required>
+            <div *ngIf="email.invalid && email.dirty" class="text-danger">
+              Email is required and valid..
+            </div>
+          </div>
+      
+          <div class="form-group" [ngClass]="{'has-error': pictureURL.invalid && pictureURL.dirty}">
+            <label for="pictureURL" class="control-label">
+              Picture URL (<b style="color: red">*</b>)
+            </label>
+            <input type="text" class="form-control" name="pictureURL" [(ngModel)]="user.pictureURL" #pictureURL="ngModel" pattern="(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*\.(?:jpg|gif|png))(?:\?([^#]*))?(?:#(.*))?"
+              title="Picture URL invalid" required>
+            <div *ngIf="pictureURL.invalid && pictureURL.dirty" class="text-danger">
+              Picture URL is required and valid.
+            </div>
+          </div>
+          <button class="btn btn-success" type="submit" [disabled]="userForm.form.invalid">
+              Save
+            </button>
+            <img *ngIf="isDataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />           
+    </div>
+  </div>
+</form>
+<div class="row">    
+    <div class="col-sm-12">        
+        &nbsp;
+    </div>       
+  </div>
+<div class="row">    
+    <div class="col-sm-6">        
+    </div>       
+  <div class="col-sm-6">
+      <button class="btn" (click)="onCancel()">
+          Cancel
+        </button>
+  </div>       
+</div>
+
+</div>

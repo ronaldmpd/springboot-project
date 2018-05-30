@@ -1,0 +1,17 @@
+<mat-card class="user-card" >
+      <mat-card-header>
+            <img *ngIf="userParam.pictureURL" mat-card-avatar [src]="userParam.pictureURL">
+            <img *ngIf="!userParam.pictureURL" mat-card-avatar [src]="defaultPictureURL">
+        <mat-card-title>{{userParam.firstName}} {{userParam.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{userParam.gender}}</mat-card-subtitle>
+      </mat-card-header>      
+      <mat-card-content>
+        <p>
+            {{userParam.street}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" class="btn btn-success btn-sm" (click)="onClickEdit(userParam)" >Edit</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="onClickDelete(userParam)">Delete</button>                
+      </mat-card-actions>
+</mat-card>  

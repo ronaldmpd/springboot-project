@@ -1,0 +1,16 @@
+<pa-navbar></pa-navbar>
+<!-- <button class="btn btn-primary pull-right" [routerLink]="['/user', 'new']">
+Add New
+</button> -->
+
+<mat-grid-list cols="2" rowHeight="200px">
+    <mat-grid-tile
+    *ngFor="let user of users">  
+   <pa-dashboard-list-item 
+    [userParam]="user"
+    [defaultPictureURL]="'https://www.juptr.io/images/default-user.png'"    
+    (onEditUserOutput)="onEditUser($event)"    
+    (onDeleteUserOutput)="onDeleteUser($event)">    
+  </pa-dashboard-list-item>  
+  </mat-grid-tile>
+</mat-grid-list> 
