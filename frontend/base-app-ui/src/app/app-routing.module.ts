@@ -6,6 +6,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { NotFount404Component } from './not-fount-404/not-fount-404.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { RoleListComponent } from './role-list/role-list.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'user/new',
     component: UserEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'roles',
+    component: RoleListComponent,
     canActivate: [AuthGuard]
   },
   {

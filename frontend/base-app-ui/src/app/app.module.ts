@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserService } from './shared/services/user.service';
+import { RoleService } from './shared/services/role.service';
 import { MatListModule, MatCardModule, MatGridListModule } from '@angular/material';
 import { DashboardListItemComponent } from './dashboard-list-item/dashboard-list-item.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
@@ -18,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFount404Component } from './not-fount-404/not-fount-404.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { RoleListComponent } from './role-list/role-list.component';
 
 
 
@@ -30,7 +32,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
     UserEditComponent,
     NavbarComponent,
     NotFount404Component,
-    LogoutComponent
+    LogoutComponent,
+    RoleListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, RoleService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -64,5 +64,19 @@
       "pictureURL": "",
       "id": 5
     }
+  ],
+  "roles":[
+  {
+	"id" : 1,
+	"name" : "role1",
+	"description": "role 1 descrip",
+	"status" : true
+  },
+  {
+	"id" : 2,
+	"name" : "role2",
+	"description": "role 2 descrip",
+	"status" : true
+  }
   ]
 }

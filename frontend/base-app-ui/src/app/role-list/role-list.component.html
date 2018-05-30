@@ -1,0 +1,11 @@
+<pa-navbar></pa-navbar>
+<p>
+  Roles!
+</p>
+<mat-list>
+  <mat-list-item *ngFor="let role of roles">
+      <h4 mat-line>{{role.name}}</h4>
+      <h4 mat-line>{{role.description}}</h4>
+  </mat-list-item>
+
+</mat-list>
