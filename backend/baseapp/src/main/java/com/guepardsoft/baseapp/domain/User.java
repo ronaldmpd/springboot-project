@@ -14,21 +14,12 @@ public class User {
     private String lastName;
     private String gender;
     private String email;
+    private String pictureURL;
     private Boolean status;
 
     public User() {
     }
 
-    public User(String id, String username, String password, String firstName, String lastName, String gender, String email, Boolean status) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-        this.status = status;
-    }
 
     public String getId() {
         return id;
@@ -94,6 +85,14 @@ public class User {
         this.status = status;
     }
 
+    public String getPictureURL() {
+        return pictureURL;
+    }
+
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -104,6 +103,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
+                ", pictureURL='" + pictureURL + '\'' +
                 ", status=" + status +
                 '}';
     }
