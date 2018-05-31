@@ -17,6 +17,14 @@ export class RoleService {
   createRole(role: Role):Observable<Role>{
     return this.httpClient.post<Role>(`${ROLES_API}`,role);
   }
+
+  getRoleById(id: number): Observable<any>{
+    return this.httpClient.get(`${ROLES_API}/${id}`);
+  }
+
+  updateRole(role: Role):Observable<Role>{
+    return this.httpClient.put<Role>(`${ROLES_API}/${role.id}`,role);
+  }  
   
   deleteRole(id:number):Observable<any>{
     return this.httpClient.delete(`${ROLES_API}/${id}`);

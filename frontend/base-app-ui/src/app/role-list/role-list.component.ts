@@ -29,6 +29,11 @@ export class RoleListComponent implements OnInit {
     this.router.navigate(['role/new']);
   };
 
+  onEditRole(role: Role):void {
+    console.log('role selected for edir: ', role);
+    this.router.navigate(['role', role.id,'edit']);
+  }
+
   onDeleteRole(role: Role){
     console.log('onDeleteRole -roles-list');
     var result = confirm("Are you sure you want to delete role: " + role.name + "'?");

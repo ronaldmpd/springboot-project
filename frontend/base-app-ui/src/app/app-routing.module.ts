@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'role/:id/edit',
+    component: RoleAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'logout',
     component: LogoutComponent
   },
