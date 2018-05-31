@@ -69,13 +69,13 @@
   {
 	"id" : 1,
 	"name" : "role1",
-	"description": "role 1 descrip",
+	"description": "descrip 1",
 	"status" : true
   },
   {
 	"id" : 2,
 	"name" : "role2",
-	"description": "role 2 descrip",
+	"description": "descrip 2",
 	"status" : true
   }
   ]
