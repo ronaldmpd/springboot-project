@@ -20,6 +20,7 @@ import { NotFount404Component } from './not-fount-404/not-fount-404.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleListComponent } from './role-list/role-list.component';
+import { RoleAddComponent } from './role-add/role-add.component';
 
 
 
@@ -33,7 +34,8 @@ import { RoleListComponent } from './role-list/role-list.component';
     NavbarComponent,
     NotFount404Component,
     LogoutComponent,
-    RoleListComponent
+    RoleListComponent,
+    RoleAddComponent
   ],
   imports: [
     BrowserModule,

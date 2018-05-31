@@ -7,6 +7,7 @@ import { NotFount404Component } from './not-fount-404/not-fount-404.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleListComponent } from './role-list/role-list.component';
+import { RoleAddComponent } from './role-add/role-add.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'roles',
     component: RoleListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'role/new',
+    component: RoleAddComponent,
     canActivate: [AuthGuard]
   },
   {

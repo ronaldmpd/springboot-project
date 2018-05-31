@@ -2,13 +2,14 @@
 
 <div class="col-md-6">
   <h2> Roles Details</h2>
-  <button class="btn btn-danger" (click)="addRole()"> Add Role</button>
+  <button class="btn btn-primary" (click)="addRole()"> Add Role</button>
   <table class="table table-striped">
     <thead>
     <tr>
       <th class="hidden">Id</th>
       <th>Name</th>
       <th>Description</th>      
+      <th>Status</th>      
       <th>Action</th>
     </tr>
     </thead>
@@ -18,8 +19,12 @@
       <td>{{role.name}}</td>
       <td>{{role.description}}</td>
       <td>{{role.status}}</td>
-      <td><button class="btn btn-danger" (click)="deleteRole(role)"> Delete</button>
-        <button class="btn btn-danger" (click)="editRole(role)" style="margin-left: 20px;"> Edit</button></td>
+      <td>
+        <button class="btn btn-secondary" (click)="editRole(role)" style="margin-left: 20px;"> Edit</button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="onDeleteRole(role)"> Delete</button>
+      </td>
+
     </tr>
     </tbody>
   </table>
