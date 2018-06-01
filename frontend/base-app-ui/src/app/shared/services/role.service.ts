@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Role } from '../model/role';
 
-const ROLES_API = 'http://localhost:3000/roles';
+const ROLES_API = 'http://localhost:8080/roles';
 
 @Injectable()
 export class RoleService {
@@ -18,7 +18,7 @@ export class RoleService {
     return this.httpClient.post<Role>(`${ROLES_API}`,role);
   }
 
-  getRoleById(id: number): Observable<any>{
+  getRoleById(id: string): Observable<any>{
     return this.httpClient.get(`${ROLES_API}/${id}`);
   }
 
@@ -26,7 +26,7 @@ export class RoleService {
     return this.httpClient.put<Role>(`${ROLES_API}/${role.id}`,role);
   }  
   
-  deleteRole(id:number):Observable<any>{
+  deleteRole(id:string):Observable<any>{
     return this.httpClient.delete(`${ROLES_API}/${id}`);
   }
 

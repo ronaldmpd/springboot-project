@@ -24,8 +24,8 @@ export class UserEditComponent implements OnInit {
         let userEmpty: User = {
           firstName: "",
           lastName: "",
-          street: "",
-          city: "",
+          username: "",
+          password: "",
           gender: "",
           email: "",
           pictureURL: ""

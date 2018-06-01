@@ -39,25 +39,25 @@
             </div>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-error': street.invalid && street.dirty}">
-            <label for="street" class="control-label">
-              Street (
+          <div class="form-group" [ngClass]="{'has-error': username.invalid && username.dirty}">
+            <label for="username" class="control-label">
+              username (
               <b style="color: red">*</b>)
             </label>
-            <input type="text" class="form-control" name="street" [(ngModel)]="user.street" #street="ngModel" required>
-            <div *ngIf="street.invalid && street.dirty" class="text-danger">
-              Street is required
+            <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+            <div *ngIf="username.invalid && username.dirty" class="text-danger">
+              username is required
             </div>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-error': city.invalid && city.dirty}">
-            <label for="city" class="control-label">
-              Cityt (
+          <div class="form-group" [ngClass]="{'has-error': password.invalid && password.dirty}">
+            <label for="password" class="control-label">
+              password (
               <b style="color: red">*</b>)
             </label>
-            <input type="text" class="form-control" name="city" [(ngModel)]="user.city" #city="ngModel" required>
-            <div *ngIf="city.invalid && city.dirty" class="text-danger">
-              City is required
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+            <div *ngIf="password.invalid && password.dirty" class="text-danger">
+              password is required
             </div>
           </div>
 

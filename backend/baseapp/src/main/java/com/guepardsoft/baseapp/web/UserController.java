@@ -64,8 +64,10 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.PATCH)
-    public void updateStudent(@RequestBody User newUser){
-        userService.updateUser(newUser);
+    public void updateUser(@RequestBody User newUser)
+    {
+      System.out.println("Update user: " + newUser);
+      userService.updateUser(newUser);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)

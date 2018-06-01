@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
     this.userService.getLogin(userManager.username, userManager.password).subscribe(result =>{
       console.log('Login result', result);
       this.isDataLoading = false;
-      if(result == undefined || result.length == 0)
+      if(result == undefined || !result.success){
         this.isLoginError = true;
+        console.log('Error login');
+      }
       else
-        {
-          if(result.length == 1){
+        {          
             console.log("Login OK user: " + JSON.stringify(result[0]));
             localStorage.setItem('isLogin', '1');
-            localStorage.setItem('userManager', JSON.stringify(result));
-            this.router.navigate(['/dashboard']);
-          }
+            localStorage.setItem('userManager', JSON.stringify(result.results));
+            this.router.navigate(['/dashboard']);          
         }
     })
   }
