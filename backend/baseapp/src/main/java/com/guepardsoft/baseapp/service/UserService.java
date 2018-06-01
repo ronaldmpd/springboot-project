@@ -32,9 +32,15 @@ public class UserService {
         newUser.setLastName(newUserDTO.getLastName());
         newUser.setGender(newUserDTO.getGender());
         newUser.setEmail(newUserDTO.getEmail());
+        newUser.setPictureURL(newUserDTO.getPictureURL());
         newUser.setStatus(newUserDTO.getStatus());
         userRepository.save(newUser);
         System.out.println("the Name of teacher is --->" + newUser.getUsername());
+    }
+
+    public User loginUser(UserController.UserLoginRequestDTO userLoginRequestDTO){
+        User user = userRepository.getUserByUsernameAndPassword(userLoginRequestDTO.getUsername(), userLoginRequestDTO.getPassword());
+        return user;
     }
 
     public void updateUser(User user){

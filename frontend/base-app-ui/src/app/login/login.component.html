@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="wrapper">  
+   <form (ngSubmit)="onLogin(userManager)" #loginForm="ngForm" class="form-signin">
+      <h2 class="form-signin-heading">Login</h2>
+      <div class="form-group" [ngClass]="{'has-error': username.invalid && username.dirty}">
+          <label for="username" class="control-label">Username (<b style="color: red">*</b>)</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="userManager.username" #username="ngModel" required 
+          pattern="[a-zA-Z0-9\s]+" (keypress)="_keyPressAlphanumeric($event)"
+          /> 
+          <div *ngIf="username.invalid && username.dirty" class="text-danger">
+            Username is required
+          </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': password.invalid && password.dirty}">
+          <label for="password" class="control-label">Password (<b style="color: red">*</b>)</label>
+          <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="userManager.password" required 
+          pattern="[a-zA-Z0-9\s]+" (keypress)="_keyPressAlphanumeric($event)"
+          /> 
+          <div *ngIf="password.invalid && password.dirty" class="text-danger">
+            Password is required
+        </div>          
+      </div>
+      <div *ngIf="isLoginError" class="text-danger">
+        Username or Password is invalid.    
+      </div>    
+      <div class="form-actions">          
+          <!-- <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+          <a href="#!/forgotEmail" class="btn btn-link">Forgot Email?</a>
+          <a href="#!/moreOptions" class="btn btn-link">More Options</a>
+          <br/>
+          <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="loginForm.form.invalid">Login</button>
+          <img *ngIf="isDataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> 
+      </div>
+  </form>   
+</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1> 404 - Not found</h1>
+      <div>
+        <a *ngIf="isLogin" [routerLink]="['/dashboard']" class="btn btn-link">Go home page</a>
+        <a *ngIf="!isLogin" href="/" class="btn btn-link">Go login page</a>
+      </div>
+    </div>
+  </div>
+</div>
