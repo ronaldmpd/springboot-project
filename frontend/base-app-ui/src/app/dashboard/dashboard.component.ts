@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/model/user';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/services/user.service';
+import { Role } from '../shared/model/role';
+import { RoleService } from '../shared/services/role.service';
 
 @Component({
   selector: 'pa-dashboard',
@@ -11,17 +13,26 @@ import { UserService } from '../shared/services/user.service';
 export class DashboardComponent implements OnInit {
 
   users: User[];
+  roles: Role[];
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, private roleService: RoleService) { }
 
   ngOnInit() {
     this.loadUsers();
+    this.loadRoles();
   }
 
   loadUsers():void{
     this.userService.getUsers().subscribe((result) => {      
       this.users = result;
-      //console.log("users result:" + JSON.stringify(result));
+      console.log("users result:" + JSON.stringify(result));
+    })
+  }
+
+  loadRoles():void{
+    this.roleService.getRoles().subscribe((result) => {      
+      this.roles = result;
+      console.log("roles result:" + JSON.stringify(result));
     })
   }
 
@@ -40,5 +51,16 @@ export class DashboardComponent implements OnInit {
         this.loadUsers();
     })
   }
+
+  private getRoleNameByRoleId(roleId: any) {
+    let roleName = '';
+    for (let i in this.roles) {
+        if (this.roles[i].id == roleId) {
+            roleName = this.roles[i].name;
+            break;
+        }
+    }
+    return roleName;
+}
 
 }
