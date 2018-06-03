@@ -2,6 +2,7 @@
 
 <div class="col-md-6">
   <h2 class="text-center">Add Role</h2>
+  <div class="container" *ngIf="role">
   <form (ngSubmit)="onSave(role)" #roleForm="ngForm">
     <div class="form-group">
       <label for="name">Name (
@@ -22,4 +23,5 @@
     &nbsp;
     <button class="btn" (click)="onCancel()">Cancel</button>
   </form>
+</div>
 </div>

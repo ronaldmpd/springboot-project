@@ -73,5 +73,4 @@ public class RoleController {
             this.status = status;
         }
     }
-
 }

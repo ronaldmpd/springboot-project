@@ -21,6 +21,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleListComponent } from './role-list/role-list.component';
 import { RoleAddComponent } from './role-add/role-add.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerService } from './shared/services/customer.service';
+import { ProductService } from './shared/services/product.service';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 
 
@@ -35,7 +39,9 @@ import { RoleAddComponent } from './role-add/role-add.component';
     NotFount404Component,
     LogoutComponent,
     RoleListComponent,
-    RoleAddComponent
+    RoleAddComponent,
+    CustomerListComponent,
+    CustomerAddComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { RoleAddComponent } from './role-add/role-add.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService, RoleService, AuthGuard],
+  providers: [UserService, RoleService, CustomerService, ProductService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

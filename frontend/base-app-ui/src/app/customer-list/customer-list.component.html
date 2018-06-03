@@ -1,0 +1,34 @@
+<pa-navbar></pa-navbar>
+
+<div class="col-md-6">
+  <h2> Customers Details</h2>
+  <button class="btn btn-primary" (click)="addCustomer()"> Add Customer</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>FirstName</th>
+      <th>LastName</th> 
+      <th>email</th>
+      <th>phone</th>      
+      <th>Status</th>      
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+      <td class="hidden"></td>
+      <td>{{customer.firstName}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.phone}}</td>
+      <td>{{customer.status}}</td>
+      <td>
+        <button class="btn btn-secondary" (click)="onEditCustomer(customer)" style="margin-left: 20px;"> Edit</button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="onDeleteCustomer(customer)"> Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,110 +1,122 @@
 package com.guepardsoft.baseapp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class User {
 
-    @Id
-    private String id;
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private String email;
-    private String pictureURL;
-    private Boolean status;
+  @Id
+  private String id;
+  @DBRef
+  private Role role;
+  private String username;
+  private String password;
+  private String firstName;
+  private String lastName;
+  private String gender;
+  private String email;
+  private String pictureURL;
+  private Boolean status;
 
-    public User() {
-    }
+  public User() {
+  }
 
 
-    public String getId() {
-        return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public Role getRole() {
+    return role;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setRole(Role role) {
+    this.role = role;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public String getGender() {
-        return gender;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getGender() {
+    return gender;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
 
-    public Boolean getStatus() {
-        return status;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getPictureURL() {
-        return pictureURL;
-    }
+  public Boolean getStatus() {
+    return status;
+  }
 
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-    }
+  public void setStatus(Boolean status) {
+    this.status = status;
+  }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", pictureURL='" + pictureURL + '\'' +
-                ", status=" + status +
-                '}';
-    }
+  public String getPictureURL() {
+    return pictureURL;
+  }
+
+  public void setPictureURL(String pictureURL) {
+    this.pictureURL = pictureURL;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+      "id='" + id + '\'' +
+      ", role=" + role +
+      ", username='" + username + '\'' +
+      ", password='" + password + '\'' +
+      ", firstName='" + firstName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", gender='" + gender + '\'' +
+      ", email='" + email + '\'' +
+      ", pictureURL='" + pictureURL + '\'' +
+      ", status=" + status +
+      '}';
+  }
 }
