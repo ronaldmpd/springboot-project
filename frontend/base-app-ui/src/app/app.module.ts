@@ -25,6 +25,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerService } from './shared/services/customer.service';
 import { ProductService } from './shared/services/product.service';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 
 
@@ -41,7 +43,9 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
     RoleListComponent,
     RoleAddComponent,
     CustomerListComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    ProductListComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,

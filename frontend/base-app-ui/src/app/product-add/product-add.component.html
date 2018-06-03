@@ -1,0 +1,35 @@
+<pa-navbar></pa-navbar>
+<!--
+export interface Product {
+  id?: string,
+  name: string,
+  description: string,    
+  price: number
+}
+-->
+
+<div class="col-md-6">
+  <h2 class="text-center">Add Product</h2>
+  <div class="container" *ngIf="product"> 
+  <form (ngSubmit)="onSave(product)" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name (
+        <b style="color: red">*</b>): </label>
+      <input placeholder="Name" name="name" class="form-control" id="name" [(ngModel)]="product.name" #name="ngModel" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input  placeholder="Description" name="description" class="form-control" id="description" [(ngModel)]="product.description" #description="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="price">price:</label>
+      <input placeholder="price" name="price" class="form-control" id="price" [(ngModel)]="product.price" #price="ngModel">
+    </div>
+    <button class="btn btn-success" type="submit" [disabled]="productForm.form.invalid" >Update</button>
+    &nbsp;
+    <button class="btn" (click)="onCancel()">Cancel</button>
+  </form>
+</div> 
+</div>
