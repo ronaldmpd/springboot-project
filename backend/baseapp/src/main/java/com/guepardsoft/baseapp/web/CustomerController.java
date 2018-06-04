@@ -4,6 +4,8 @@ package com.guepardsoft.baseapp.web;
 import com.guepardsoft.baseapp.domain.Customer;
 import com.guepardsoft.baseapp.service.CustomerService;
 import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ import java.util.List;
 @Api(value="onlinestore", description="Operations pertaining to customers in Online Store")
 
 public class CustomerController {
+
+  private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
   @Autowired
   CustomerService customerService;

@@ -5,6 +5,8 @@ import com.guepardsoft.baseapp.service.UserService;
 import com.guepardsoft.baseapp.util.ResponseREST;
 import com.guepardsoft.baseapp.util.StringUtil;
 import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +18,16 @@ import java.util.List;
 
 public class UserController {
 
+  private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
     @Autowired
     UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> getAllTeachers(){
-        return userService.getAllUsers();
+    public List<User> getAllUsers(){
+      logger.info("Get all users");
+      return userService.getAllUsers();
     }
 
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
@@ -39,6 +45,7 @@ public class UserController {
       userRequestDTO.setEmail(user.getEmail());
       userRequestDTO.setPictureURL(user.getPictureURL());
       userRequestDTO.setStatus(user.getStatus());
+      logger.info("get User by Id " + userRequestDTO);
       return  userRequestDTO;
     }
 
@@ -50,8 +57,7 @@ public class UserController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ResponseREST loginUser(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
         ResponseREST responseREST = new ResponseREST();
-
-        System.out.println("userLoginRequestDTO : " + userLoginRequestDTO);
+        logger.info("userLoginRequestDTO : " + userLoginRequestDTO);
 
         if(StringUtil.isNullOrEmpty(userLoginRequestDTO.getUsername())){
             responseREST.setMessage("required username");
@@ -72,7 +78,7 @@ public class UserController {
             responseREST.setMessage("OK");
             responseREST.setResults(userLogin);
         }
-        System.out.println("User login : " + responseREST);
+        logger.info("User login : " + responseREST);
         return  responseREST;
     }
 
