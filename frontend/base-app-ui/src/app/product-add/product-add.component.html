@@ -19,7 +19,7 @@
       <label for="price">price:</label>
       <input placeholder="price" name="price" class="form-control" id="price" [(ngModel)]="product.price" #price="ngModel">
     </div>
-    <button class="btn btn-success" type="submit" [disabled]="productForm.form.invalid" >Update</button>
+    <button class="btn btn-success" type="submit" [disabled]="productForm.form.invalid" >Save</button>
     &nbsp;
     <button class="btn" (click)="onCancel()">Cancel</button>
   </form>

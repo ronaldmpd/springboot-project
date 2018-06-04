@@ -6,5 +6,6 @@ export interface User {
     password: string,
     gender: string,
     email: string,
-    pictureURL: string
+    pictureURL: string,
+    roleId: string
 }

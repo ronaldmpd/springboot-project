@@ -15,11 +15,10 @@ export class DashboardComponent implements OnInit {
   users: User[];
   roles: Role[];
 
-  constructor(private router: Router, private userService: UserService, private roleService: RoleService) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.loadUsers();
-    this.loadRoles();
+    this.loadUsers();    
   }
 
   loadUsers():void{
@@ -29,12 +28,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  loadRoles():void{
-    this.roleService.getRoles().subscribe((result) => {      
-      this.roles = result;
-      console.log("roles result:" + JSON.stringify(result));
-    })
-  }
+ 
 
   onEditUser(user: User):void {
     console.log('user selected', user);

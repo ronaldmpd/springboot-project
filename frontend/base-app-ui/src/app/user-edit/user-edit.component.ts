@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/model/user';
+import { Role } from '../shared/model/role';
+import { RoleService } from '../shared/services/role.service';
 
 @Component({
   selector: 'pa-user-edit',
@@ -11,13 +13,18 @@ import { User } from '../shared/model/user';
 export class UserEditComponent implements OnInit {
 
   user: User;
+  roles: Role[];
+
   isNewUser = false;
   isDataLoading: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router, private roleService: RoleService) { }  
+  
+  ngOnInit() {    
     this.activatedRoute.params.subscribe((params: any) => {
+
+      this.loadRoles();
+
       console.log("Edit user id:", params.id);
 
       if (params.id == undefined) {
@@ -28,7 +35,8 @@ export class UserEditComponent implements OnInit {
           password: "",
           gender: "",
           email: "",
-          pictureURL: ""
+          pictureURL: "",
+          roleId: ""
         }
         this.user = userEmpty;
         this.isNewUser = true;
@@ -39,6 +47,13 @@ export class UserEditComponent implements OnInit {
           console.log('User edit', this.user);
         })
       }
+    })
+  }
+
+  loadRoles():void{
+    this.roleService.getRoles().subscribe((result) => {      
+      this.roles = result;
+      console.log("roles result:" + JSON.stringify(result));
     })
   }
 

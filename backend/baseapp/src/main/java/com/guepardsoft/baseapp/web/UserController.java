@@ -25,8 +25,21 @@ public class UserController {
     }
 
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
-    public User getUserById(@PathVariable String id){
-        return userService.getUserById(id);
+    public UserRequestDTO getUserById(@PathVariable String id){
+     // return userService.getUserById(id);
+      User user = userService.getUserById(id);
+      UserRequestDTO userRequestDTO = new UserRequestDTO();
+      userRequestDTO.setId(user.getId());
+      userRequestDTO.setFirstName(user.getFirstName());
+      userRequestDTO.setLastName(user.getLastName());
+      userRequestDTO.setUsername(user.getUsername());
+      userRequestDTO.setPassword(user.getPassword());
+      userRequestDTO.setRoleId(user.getRole().getId());
+      userRequestDTO.setGender(user.getGender());
+      userRequestDTO.setEmail(user.getEmail());
+      userRequestDTO.setPictureURL(user.getPictureURL());
+      userRequestDTO.setStatus(user.getStatus());
+      return  userRequestDTO;
     }
 
     @RequestMapping(method = RequestMethod.POST)

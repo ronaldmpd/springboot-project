@@ -62,6 +62,20 @@
           </div>
 
           <div class="form-group">
+            <label for="roleDdl" class="control-label">Role:</label>
+            
+                <select class="form-control" required id="roleDdl" name="roleDdl" [(ngModel)]="user.roleId" (ngModelChange)="edited = true; ">
+                    <option [value]="">
+                        Select Role
+                    </option>
+                    <option *ngFor="let role of roles" [selected]="role.id == user.roleId" [value]="role.id">
+                        {{role.name}}
+                    </option>
+                </select>
+            
+        </div>
+          
+          <div class="form-group">
             <label for="gender" class="control-label">
               Gender (
               <b style="color: red">*</b>)
