@@ -24,12 +24,12 @@ public class RoleService {
     }
 
     public void addRole(RoleController.RoleRequestDTO newUserDTO){
-        Role newUser = new Role();
-        newUser.setName(newUserDTO.getName());
-        newUser.setDescription(newUserDTO.getDescription());
-        newUser.setStatus(newUserDTO.getStatus());
-        roleRepository.save(newUser);
-        System.out.println("the Name of role is --->" + newUser.getName());
+        Role role = new Role();
+        role.setName(newUserDTO.getName());
+        role.setDescription(newUserDTO.getDescription());
+        role.setStatus(newUserDTO.getStatus());
+        roleRepository.save(role);
+        System.out.println("add role --->" + role);
     }
 
 

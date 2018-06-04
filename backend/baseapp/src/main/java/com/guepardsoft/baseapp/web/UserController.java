@@ -25,8 +25,21 @@ public class UserController {
     }
 
     @RequestMapping(path="/{id}",method = RequestMethod.GET)
-    public User getUserById(@PathVariable String id){
-        return userService.getUserById(id);
+    public UserRequestDTO getUserById(@PathVariable String id){
+     // return userService.getUserById(id);
+      User user = userService.getUserById(id);
+      UserRequestDTO userRequestDTO = new UserRequestDTO();
+      userRequestDTO.setId(user.getId());
+      userRequestDTO.setFirstName(user.getFirstName());
+      userRequestDTO.setLastName(user.getLastName());
+      userRequestDTO.setUsername(user.getUsername());
+      userRequestDTO.setPassword(user.getPassword());
+      userRequestDTO.setRoleId(user.getRole().getId());
+      userRequestDTO.setGender(user.getGender());
+      userRequestDTO.setEmail(user.getEmail());
+      userRequestDTO.setPictureURL(user.getPictureURL());
+      userRequestDTO.setStatus(user.getStatus());
+      return  userRequestDTO;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -64,10 +77,10 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.PATCH)
-    public void updateUser(@RequestBody User newUser)
+    public void updateUser(@RequestBody UserRequestDTO newTeacherDTO)
     {
-      System.out.println("Update user: " + newUser);
-      userService.updateUser(newUser);
+      System.out.println("Update user: " + newTeacherDTO);
+      userService.updateUser(newTeacherDTO);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
@@ -75,7 +88,9 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-        public static class UserRequestDTO{
+    public static class UserRequestDTO{
+        private String id;
+        private String roleId;
         private String username;
         private String password;
         private String firstName;
@@ -85,7 +100,23 @@ public class UserController {
         private String pictureURL;
         private Boolean status;
 
-        public String getUsername() {
+      public String getId() {
+        return id;
+      }
+
+      public void setId(String id) {
+        this.id = id;
+      }
+
+      public String getRoleId() {
+        return roleId;
+      }
+
+      public void setRoleId(String roleId) {
+        this.roleId = roleId;
+      }
+
+      public String getUsername() {
             return username;
         }
 

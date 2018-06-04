@@ -3,11 +3,11 @@
             <img *ngIf="userParam.pictureURL" mat-card-avatar [src]="userParam.pictureURL">
             <img *ngIf="!userParam.pictureURL" mat-card-avatar [src]="defaultPictureURL">
         <mat-card-title>{{userParam.firstName}} {{userParam.lastName}}</mat-card-title>
-        <mat-card-subtitle>{{userParam.gender}}</mat-card-subtitle>
+        <mat-card-subtitle>{{userParam.username}}</mat-card-subtitle>
       </mat-card-header>      
       <mat-card-content>
         <p>
-            {{userParam.username}}
+            {{userParam.role.name}}
         </p>
       </mat-card-content>
       <mat-card-actions>

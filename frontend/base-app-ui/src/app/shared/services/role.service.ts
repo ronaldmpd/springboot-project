@@ -23,7 +23,7 @@ export class RoleService {
   }
 
   updateRole(role: Role):Observable<Role>{
-    return this.httpClient.put<Role>(`${ROLES_API}/${role.id}`,role);
+    return this.httpClient.patch<Role>(`${ROLES_API}`, role);
   }  
   
   deleteRole(id:string):Observable<any>{

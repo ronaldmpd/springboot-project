@@ -1,0 +1,38 @@
+<pa-navbar></pa-navbar>
+<!--
+export interface Product {
+    id?: string,
+    name: string,
+    description: string,    
+    price: number
+}
+-->
+
+<div class="col-md-6">
+  <h2> Products Details</h2>
+  <button class="btn btn-primary" (click)="addProduct()"> Add Product</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Name</th>
+      <th>Description</th>      
+      <th>price</th>            
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td class="hidden"></td>
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.price}}</td>      
+      <td>
+        <button class="btn btn-secondary" (click)="onEditProduct(product)" style="margin-left: 20px;"> Edit</button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="onDeleteProduct(product)"> Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

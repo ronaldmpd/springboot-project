@@ -8,6 +8,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleListComponent } from './role-list/role-list.component';
 import { RoleAddComponent } from './role-add/role-add.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 const routes: Routes = [
   {
@@ -42,6 +46,36 @@ const routes: Routes = [
   {
     path: 'role/:id/edit',
     component: RoleAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'customers',
+    component: CustomerListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'customer/new',
+    component: CustomerAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'customer/:id/edit',
+    component: CustomerAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'products',
+    component: ProductListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'product/new',
+    component: ProductAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'product/:id/edit',
+    component: ProductAddComponent,
     canActivate: [AuthGuard]
   },
   {
